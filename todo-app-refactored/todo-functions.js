@@ -75,14 +75,14 @@ const generateTodoDOM = function (todo) {
 
 //Rendering Todos
 const renderTodos = function (todos, filters) {
-    const filteredTodos = todos.filter(function (todo) {
-        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLocaleLowerCase())
-        const hideCompletedMatch = !filters.hideCompleted || !todo.completed
+    const filteredTodos = todos.filter(function ({text, completed}) {
+        const searchTextMatch = text.toLowerCase().includes(filters.searchText.toLocaleLowerCase())
+        const hideCompletedMatch = !filters.hideCompleted || !completed
         return searchTextMatch && hideCompletedMatch
     })
 
-    const incompleteTodos = filteredTodos.filter(function (todo) {
-        return !todo.completed
+    const incompleteTodos = filteredTodos.filter(function ({ completed }) {
+        return !completed
     })
 
     document.querySelector('#todo-list').innerHTML = ''

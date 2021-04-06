@@ -47,7 +47,7 @@ class Hangman {
         }
 
         if (isUnique) {
-            this.guessedLetters.push(guessLetter)
+            this.guessedLetters = [...this.guessedLetters, guessLetter]
         }
         if (isUnique && isBadGuess) {
             this.remainingGuesses--
